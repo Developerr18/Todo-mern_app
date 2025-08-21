@@ -1,50 +1,42 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
 
-const initialTasks = [
-  { id: 1, text: "Visit Ujjain Mahakal Temple", done: true },
-  { id: 2, text: "make a project", done: false },
-  { id: 3, text: "Watch a show", done: false },
-];
-
 export default function TodoApp() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const res = await fetch("http://localhost:4000/api/tasks");
-    console.log(res);
+    const res = await axios.get("http://localhost:4000/api/tasks");
+    setTasks(res.data);
   };
 
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  function handleAddTask(text) {
-    if (text.trim() === "") return;
-    return setTasks([...tasks, { id: tasks.length + 1, text, done: false }]);
-  }
+  const addTask = async (newTask) => {
+    await axios.post("http://localhost:4000/api/tasks", newTask);
+    fetchTasks();
+  };
 
-  function handleChangeTask(updatedTask) {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === updatedTask.id) {
-          return updatedTask;
-        } else {
-          return task;
-        }
-      })
+  const handleChangeTask = async (updatedTask) => {
+    await axios.put(
+      `http://localhost:4000/api/tasks/${updatedTask._id}`,
+      updatedTask
     );
-  }
+    fetchTasks();
+  };
 
-  function handleDeleteTask(id) {
-    setTasks(tasks.filter((task) => task.id !== id));
-  }
+  const handleDeleteTask = async (id) => {
+    await axios.delete(`http://localhost:4000/api/tasks/${id}`);
+    fetchTasks();
+  };
 
   return (
     <div className="todo-container">
       <h1>Todo App</h1>
-      <AddTask onAddTask={handleAddTask} />
+      <AddTask onAddTask={addTask} />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}

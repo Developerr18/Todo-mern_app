@@ -4,13 +4,13 @@ export default function Task({ task, onChangeTask, onDeleteTask }) {
   const [editingId, setEditingId] = useState(null);
 
   return (
-    <li key={task.id}>
+    <li>
       <input
         type="checkbox"
         checked={task.done}
         onChange={(e) => onChangeTask({ ...task, done: e.target.checked })}
       />
-      {editingId === task.id ? (
+      {editingId === task._id ? (
         <input
           type="text"
           value={task.text}
@@ -21,11 +21,11 @@ export default function Task({ task, onChangeTask, onDeleteTask }) {
       )}
       <button
         className="edit-btn"
-        onClick={() => setEditingId(editingId === task.id ? null : task.id)}
+        onClick={() => setEditingId(editingId === task._id ? null : task._id)}
       >
-        {editingId === task.id ? "Save" : "Edit"}
+        {editingId === task._id ? "Save" : "Edit"}
       </button>
-      <button className="delete-btn" onClick={() => onDeleteTask(task.id)}>
+      <button className="delete-btn" onClick={() => onDeleteTask(task._id)}>
         Delete
       </button>
     </li>

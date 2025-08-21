@@ -6,7 +6,7 @@ export default function TaskList({ tasks, onChangeTask, onDeleteTask }) {
       <ul>
         {tasks.map((task) => (
           <Task
-            key={task.id}
+            key={task._id}
             task={task}
             onChangeTask={onChangeTask}
             onDeleteTask={onDeleteTask}
