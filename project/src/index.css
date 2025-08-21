@@ -1,0 +1,113 @@
+/* General styling */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #313131;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+/* Container styling */
+.todo-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input and button styling */
+.add-task-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-task-container input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.add-task-container button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-task-container button:hover {
+  background-color: #218838;
+}
+
+/* Task list styling */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Edit and Delete buttons */
+button {
+  padding: 6px 10px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
+/* Edit button styling */
+button.edit-btn {
+  background-color: #5c67f2;
+}
+
+button.edit-btn:hover {
+  background-color: #4a54e1;
+}
+
+/* Text input for editing */
+input[type="text"] {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
